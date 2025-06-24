@@ -1,0 +1,3 @@
+envName=STAGE_QA
+browserName=chrome
+runMode=local
