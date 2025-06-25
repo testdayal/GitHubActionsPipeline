@@ -55,8 +55,10 @@ public class BaseFramework {
         //setEnvData();
         setEnvDataFramework();
         runMode = appConfigurationData.runMode;
-        System.out.println("Initialize-Browser");
-        getWebdriverManager().getBrowserConfiguration("chrome");
+        System.out.println("-----------Initialize-Browser----------");
+        getWebdriverManager().getBrowserConfiguration(new AppConfigurationData().browser);
+        System.out.println("BrowserName : "+new AppConfigurationData().browser);
+        System.out.println("-----------Initialize-Browser----------");
     }
 
 //    public void setEnvData() throws FileNotFoundException {
