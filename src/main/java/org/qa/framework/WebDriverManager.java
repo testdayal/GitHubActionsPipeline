@@ -24,7 +24,6 @@ public class WebDriverManager {
     }
 
     public void getBrowserConfiguration(String browserName) {
-        browserName = new AppConfigurationData().browser;
         if (browserName.equalsIgnoreCase("chrome")) {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("start-maximized");
