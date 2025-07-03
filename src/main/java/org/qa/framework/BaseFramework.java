@@ -11,8 +11,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class BaseFramework {
-    public static  Properties prop = new Properties();
-    final static String fileLocation="src/main/java/org/qa/framework/environmentProperties";
+    public static Properties prop = new Properties();
+    final static String fileLocation = "src/main/java/org/qa/framework/environmentProperties";
     public static Dotenv dotenv;
     public static String runMode;
     public static String envName = null;
@@ -57,35 +57,10 @@ public class BaseFramework {
         runMode = appConfigurationData.runMode;
         System.out.println("-----------Initialize-Browser----------");
         getWebdriverManager().getBrowserConfiguration(new AppConfigurationData().browser);
-        System.out.println("BrowserName : "+new AppConfigurationData().browser);
+        System.out.println("BrowserName : " + new AppConfigurationData().browser);
         System.out.println("-----------Initialize-Browser----------");
     }
 
-//    public void setEnvData() throws FileNotFoundException {
-//        String URL = null;
-//        if (runMode.equalsIgnoreCase("local")) {
-//            if (envName.equalsIgnoreCase("STAGE_QA")) {
-//                environmentConfiguration.setUrl( dotenv.get("STAGE_QA"));
-//            } else if (envName.equalsIgnoreCase("DEV_QA")) {
-//                environmentConfiguration.setUrl(dotenv.get("DEV_QA"));
-//
-//            } else if (envName.equalsIgnoreCase("PROD_QA")) {
-//                environmentConfiguration.setUrl(dotenv.get("PROD_QA"));
-//
-//
-//            } else if (appConfigurationData.runMode.equalsIgnoreCase("CI")) {
-//                envName = environmentConfiguration.setEnvName(appConfigurationData.env);
-//                if (envName.equalsIgnoreCase("STAGE_QA")) {
-//                    environmentConfiguration.setUrl(dotenv.get("STAGE_QA"));
-//                } else if (envName.equalsIgnoreCase("DEV_QA")) {
-//                    environmentConfiguration.setUrl(dotenv.get("DEV_QA"));
-//                } else if (envName.equalsIgnoreCase("PROD_QA")) {
-//                    environmentConfiguration.setUrl(dotenv.get("PROD_QA"));
-//
-//                }
-//            }
-//        }
-//    }
 
     public void setEnvDataFramework() throws FileNotFoundException {
         envName = environmentConfiguration.setEnvName(appConfigurationData.env);
@@ -96,32 +71,18 @@ public class BaseFramework {
         } else if (envName.equalsIgnoreCase("PROD_QA")) {
             environmentConfiguration.setUrl(dotenv.get("PROD_QA"));
 
+        } else if (envName.equalsIgnoreCase("TEST_QA")) {
+            environmentConfiguration.setUrl(dotenv.get("TEST_QA"));
         }
     }
 
-    //    public String setEnvName() throws FileNotFoundException {
-//        if (runMode.equalsIgnoreCase("local")) {
-//            Properties prop = new Properties();
-//            InputStream input = null;
-//            try {
-//                input = new FileInputStream(fileLocation);
-//                prop.load(input);
-//                envName = prop.getProperty("envName");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        } else if (runMode.equalsIgnoreCase("CI")) {
-//            envName = appConfigurationData.env;
-//        }
-//        return envName;
-//    }
     public String setEnvNameFramework() throws FileNotFoundException {
         readPropertiesFileForEnv();
         envName = appConfigurationData.env;
-        return  envName;
+        return envName;
     }
 
-    public void envFilesConfiguration(){
+    public void envFilesConfiguration() {
         dotenv = Dotenv.configure().directory("src/main/java/resources/.env").load();
 
     }
