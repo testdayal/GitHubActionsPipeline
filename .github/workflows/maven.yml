@@ -7,12 +7,8 @@
 # documentation.
 
 name: Java CI with Maven
-
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,6 +24,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean test  -Dbrowser="chrome" -Denv="STAGE_QA" -DXmlSuiteFile="Regression.xml"
+      run: mvn clean test  -Dbrowser="chrome" -Denv="TEST_QA" -Dusername="test-DXmlSuiteFile="Regression.xml"
 
    
