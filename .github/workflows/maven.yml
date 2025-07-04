@@ -6,9 +6,14 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Workflow Using Variables forSpecific Job
 on:
   workflow_dispatch:
+env:
+  UNAME: testlogin2
+  PWD: testpassword2
+  ENV: TEST_QA
+ 
 
 jobs:
   build:
@@ -24,6 +29,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean test  -Dbrowser="chrome" -Denv="TEST_QA" -Dusername="testlogin1" -Dpassword="testpassword1"-DXmlSuiteFile="Regression.xml"
+      run: mvn clean test  -Dbrowser="chrome" -Denv="$ENV" -Dusername="$UNAME" -Dpassword="$PWD"-DXmlSuiteFile="Regression.xml"
 
    
