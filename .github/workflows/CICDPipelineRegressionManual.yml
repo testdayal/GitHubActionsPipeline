@@ -24,6 +24,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean test -Dbrowser="chrome" -Denv="TEST_QA" -Dusername="testlogin2" -Dpassword="testpassword2" -DXmlSuiteFile="Regression.xml"
+      env:
+        UserName: testlogin2
+        Password: testpassword2
+      run: mvn clean test -Dbrowser="chrome" -Denv="TEST_QA" -Dusername=$UserName -Dpassword=$Password -DXmlSuiteFile="Regression.xml"
 
    
