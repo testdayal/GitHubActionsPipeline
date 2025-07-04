@@ -27,6 +27,6 @@ jobs:
       env:
         UserName: testlogin2
         Password: testpassword2
-      run: mvn clean test -Dbrowser="chrome" -Denv="TEST_QA" -Dusername=$UserName -Dpassword=$Password -DXmlSuiteFile="Regression.xml"
+      run: mvn clean test -Dbrowser="chrome" -Denv="TEST_QA" -Dusername="${{vars.USERNAME}}" -Dpassword="${{vars.PASSWORD}}" -DXmlSuiteFile="Regression.xml"
 
    
