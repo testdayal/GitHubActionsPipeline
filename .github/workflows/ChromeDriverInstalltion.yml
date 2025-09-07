@@ -27,11 +27,10 @@ jobs:
     - name: Set up Chrome and ChromeDriver
       uses: browser-actions/setup-chrome@v1
       with:
-        chrome-version: stable # Or specify a version like '120'
+        chrome-version: 139 # Or specify a version like '120'
         install-chromedriver: true
 
     - name: Verify Chrome and ChromeDriver versions
-      run: |
-        google-chrome --version
+      run: |        
         chromedriver --version
    
