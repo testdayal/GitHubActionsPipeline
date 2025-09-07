@@ -23,10 +23,16 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      env:
-        UserName: testlogin2
-        Password: testpassword2
+    - name: Set up Chrome and ChromeDriver
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: 139 # Or specify a version like '120'
+        install-chromedriver: true
+
+    - name: Verify Chrome and ChromeDriver versions
+      run: |        
+        chromedriver --version
+    - name: Build with Maven     
       run: mvn clean test -Dbrowser="chrome" -Denv="TEST_QA" -Dusername="${{vars.USERNAME}}" -Dpassword="${{vars.PASSWORD}}" -DXmlSuiteFile="Regression.xml"
 
    
